@@ -1,5 +1,7 @@
 import { Header } from "@/components/Header";
-import { Card } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ReportGenerator } from "@/components/reports/ReportGenerator";
+import { ParticipationStats } from "@/components/reports/ParticipationStats";
 
 const Reports = () => {
   return (
@@ -13,11 +15,18 @@ const Reports = () => {
               View and generate DBE participation reports
             </p>
           </div>
-          <Card className="p-6 animate-fadeIn">
-            <p className="text-center text-gray-600">
-              Report functionality coming soon
-            </p>
-          </Card>
+          <Tabs defaultValue="generate-report" className="space-y-6">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="generate-report">Generate Report</TabsTrigger>
+              <TabsTrigger value="participation-stats">Participation Statistics</TabsTrigger>
+            </TabsList>
+            <TabsContent value="generate-report">
+              <ReportGenerator />
+            </TabsContent>
+            <TabsContent value="participation-stats">
+              <ParticipationStats />
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
     </div>
